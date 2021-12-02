@@ -28,7 +28,7 @@ export default class LifeguardProfile extends BaseModel {
   public person: BelongsTo<typeof Person>
 
   @manyToMany(() => Role, {
-    pivotTable: 'lifeguard_profile_roles',
+    pivotTable: 'lifeguard_profile_role',
     localKey: 'personId',
     relatedKey: 'id',
     pivotForeignKey: 'person_id',
@@ -38,7 +38,7 @@ export default class LifeguardProfile extends BaseModel {
   public roles: ManyToMany<typeof Role>
 
   @manyToMany(() => Reward, {
-    pivotTable: 'lifeguard_profile_rewards',
+    pivotTable: 'lifeguard_profile_reward',
     localKey: 'personId',
     relatedKey: 'id',
     pivotForeignKey: 'person_id',

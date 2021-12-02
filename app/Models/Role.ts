@@ -10,11 +10,11 @@ export default class Role extends BaseModel {
   public name: string
 
   @manyToMany(() => LifeguardProfile, {
-    pivotTable: 'lifeguard_profile_roles',
     localKey: 'id',
     relatedKey: 'personId',
     pivotForeignKey: 'role_id',
-    pivotRelatedForeignKey: 'lifeguard_person_id',
+    pivotRelatedForeignKey: 'person_id',
+    pivotTable: 'lifeguard_profile_role',
     pivotTimestamps: true,
   })
   public lifeguardProfile: ManyToMany<typeof LifeguardProfile>

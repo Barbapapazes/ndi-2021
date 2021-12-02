@@ -10,11 +10,11 @@ export default class Reward extends BaseModel {
   public name: string
 
   @manyToMany(() => LifeguardProfile, {
-    pivotTable: 'lifeguard_profile_rewards',
     localKey: 'id',
     relatedKey: 'personId',
     pivotForeignKey: 'reward_id',
-    pivotRelatedForeignKey: 'lifeguard_person_id',
+    pivotRelatedForeignKey: 'person_id',
+    pivotTable: 'lifeguard_profile_reward',
     pivotTimestamps: true,
   })
   public lifeguardProfile: ManyToMany<typeof LifeguardProfile>

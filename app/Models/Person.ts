@@ -27,14 +27,14 @@ export default class Person extends BaseModel {
     relatedKey: 'id',
     pivotForeignKey: 'person_id',
     pivotRelatedForeignKey: 'excursion_id',
-    pivotTable: 'excursion_persons',
+    pivotTable: 'excursion_person',
   })
   public excursions: ManyToMany<typeof Excursion>
 
   @hasOne(() => LifeguardProfile, {
     foreignKey: 'personId',
     localKey: 'id',
-    serializeAs: 'lifeguard_profile',
+    serializeAs: 'lifeguard_profiles',
   })
   public lifeguardProfile: HasOne<typeof LifeguardProfile>
 

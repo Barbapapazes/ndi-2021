@@ -21,7 +21,8 @@ export default class Excursion extends BaseModel {
     relatedKey: 'id',
     pivotForeignKey: 'excursion_id',
     pivotRelatedForeignKey: 'boat_id',
-    pivotTable: 'boat_excursions',
+    pivotTable: 'boat_excursion',
+    pivotTimestamps: true,
   })
   public boats: ManyToMany<typeof Boat>
 
@@ -30,7 +31,8 @@ export default class Excursion extends BaseModel {
     relatedKey: 'id',
     pivotForeignKey: 'excursion_id',
     pivotRelatedForeignKey: 'person_id',
-    pivotTable: 'excursion_persons',
+    pivotTable: 'excursion_person',
+    pivotTimestamps: true,
   })
   public savedPerson: ManyToMany<typeof Person>
 
