@@ -6,10 +6,13 @@ export default class Role extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public name: string
+
   @manyToMany(() => LifeguardProfile, {
     pivotTable: 'lifeguard_profile_roles',
     localKey: 'id',
-    relatedKey: 'person_id',
+    relatedKey: 'personId',
     pivotForeignKey: 'role_id',
     pivotRelatedForeignKey: 'lifeguard_person_id',
     pivotTimestamps: true,

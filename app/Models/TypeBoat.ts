@@ -6,8 +6,11 @@ export default class TypeBoat extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public name: string
+
   @hasMany(() => Boat, {
-    foreignKey: 'type_boat_id',
+    foreignKey: 'typeBoatId',
   })
   public boats: HasMany<typeof Boat>
 

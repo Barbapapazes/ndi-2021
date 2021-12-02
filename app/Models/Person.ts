@@ -1,7 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, HasOne, hasOne, manyToMany, ManyToMany } from '@ioc:Adonis/Lucid/Orm'
 import LifeguardProfile from './LifeguardProfile'
-import SavedProfile from './SavedProfile'
 import Excursion from './Excursion'
 
 export default class Person extends BaseModel {
@@ -12,7 +11,16 @@ export default class Person extends BaseModel {
   public firstname: string
 
   @column()
-  public lastname: string
+  public lastname?: string
+
+  @column.dateTime()
+  public birth?: DateTime
+
+  @column.dateTime()
+  public death?: DateTime
+
+  @column()
+  public gender?: string
 
   @manyToMany(() => Excursion, {
     localKey: 'id',
@@ -24,18 +32,11 @@ export default class Person extends BaseModel {
   public excursions: ManyToMany<typeof Excursion>
 
   @hasOne(() => LifeguardProfile, {
-    foreignKey: 'person_id',
+    foreignKey: 'personId',
     localKey: 'id',
     serializeAs: 'lifeguard_profile',
   })
   public lifeguardProfile: HasOne<typeof LifeguardProfile>
-
-  @hasOne(() => SavedProfile, {
-    foreignKey: 'person_id',
-    localKey: 'id',
-    serializeAs: 'saved_profile',
-  })
-  public savedProfile: HasOne<typeof SavedProfile>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

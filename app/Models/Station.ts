@@ -7,8 +7,14 @@ export default class Station extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public name: string
+
+  @column()
+  public location: string
+
   @hasMany(() => Boat, {
-    foreignKey: 'station_id',
+    foreignKey: 'stationId',
     localKey: 'id',
   })
   public boats: HasMany<typeof Boat>

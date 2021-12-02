@@ -4,7 +4,13 @@ import Boat from './Boat'
 
 export default class LifeguardBoatProfile extends BaseModel {
   @column({ isPrimary: true })
-  public id: number
+  public boatId: number
+
+  @column.dateTime({ serializeAs: 'start_date' })
+  public startDate: DateTime
+
+  @column.dateTime({ serializeAs: 'end_date' })
+  public endDate?: DateTime
 
   @belongsTo(() => Boat, {
     foreignKey: 'boatId',

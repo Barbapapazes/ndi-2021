@@ -10,16 +10,23 @@ import {
   ManyToMany,
 } from '@ioc:Adonis/Lucid/Orm'
 import LifeguardBoatProfile from './LifeguardBoatProfile'
-import SavedBoatProfile from './SavedBoatProfile'
 import Person from './Person'
 import Station from './Station'
 import Excursion from './Excursion'
+import TypeBoat from './TypeBoat'
 
 export default class Boat extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public name: string
+
+  @column()
   public stationId: number
+
+  @column({ serializeAs: 'type_boat_id' })
+  public typeBoatId: number
 
   @hasMany(() => Person, {
     localKey: 'id',
@@ -27,22 +34,22 @@ export default class Boat extends BaseModel {
   })
   public persons: HasMany<typeof Person>
 
-  @hasOne(() => SavedBoatProfile, {
-    localKey: 'id',
-    foreignKey: 'boat_id',
-    serializeAs: 'saved_boat_profile',
-  })
-  public savedBoatProfile: HasOne<typeof SavedBoatProfile>
-
   @hasOne(() => LifeguardBoatProfile, {
     localKey: 'id',
-    foreignKey: 'boat_id',
+    foreignKey: 'boatId',
     serializeAs: 'lifeguard_boat_profile',
   })
   public lifeguardBoatProfile: HasOne<typeof LifeguardBoatProfile>
 
+  @hasOne(() => TypeBoat, {
+    localKey: 'typeBoatId',
+    foreignKey: 'id',
+    serializeAs: 'type_boat',
+  })
+  public typeBoat: HasOne<typeof TypeBoat>
+
   @hasOne(() => Station, {
-    localKey: 'station_id',
+    localKey: 'stationId',
     foreignKey: 'id',
   })
   public station: HasOne<typeof Station>

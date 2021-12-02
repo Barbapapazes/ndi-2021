@@ -7,6 +7,15 @@ export default class Excursion extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public name: string
+
+  @column()
+  public location: string
+
+  @column.dateTime()
+  public date: DateTime
+
   @manyToMany(() => Boat, {
     localKey: 'id',
     relatedKey: 'id',

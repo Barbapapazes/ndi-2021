@@ -13,17 +13,23 @@ import Person from './Person'
 
 export default class LifeguardProfile extends BaseModel {
   @column({ isPrimary: true })
-  public person_id: number
+  public personId: number
+
+  @column.dateTime({ serializeAs: 'start_date' })
+  public startDate: DateTime
+
+  @column.dateTime({ serializeAs: 'end_date' })
+  public endDate?: DateTime
 
   @belongsTo(() => Person, {
-    foreignKey: 'person_id',
+    foreignKey: 'personId',
     localKey: 'id',
   })
   public person: BelongsTo<typeof Person>
 
   @manyToMany(() => Role, {
     pivotTable: 'lifeguard_profile_roles',
-    localKey: 'person_id',
+    localKey: 'personId',
     relatedKey: 'id',
     pivotForeignKey: 'person_id',
     pivotRelatedForeignKey: 'role_id',
@@ -33,7 +39,7 @@ export default class LifeguardProfile extends BaseModel {
 
   @manyToMany(() => Reward, {
     pivotTable: 'lifeguard_profile_rewards',
-    localKey: 'person_id',
+    localKey: 'personId',
     relatedKey: 'id',
     pivotForeignKey: 'person_id',
     pivotRelatedForeignKey: 'reward_id',
