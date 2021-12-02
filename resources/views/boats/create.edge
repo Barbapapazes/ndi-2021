@@ -1,0 +1,20 @@
+<form action="{{ route('BoatsController.store') }}" method="post">
+<label for="name">Nom</label>
+<input type="text" id="name" name="name" required>
+
+<label for="station">Station</label>
+<select name="stationId" id="station">
+  @each(station in stations)
+    <option value="{{ station.id }}">{{ station.name }}</option>
+  @endeach
+</select>
+
+<label for="type-boat">Station</label>
+<select name="typeBoatId" id="type-boat">
+  @each(type in typeBoats)
+    <option value="{{ type.id }}">{{ type.name }}</option>
+  @endeach
+</select>
+
+<button type="submit">Créer le bateau</button>
+</form>

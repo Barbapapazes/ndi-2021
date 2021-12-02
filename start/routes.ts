@@ -36,3 +36,7 @@ Route.group(() => {
   Route.post('/signup', 'AuthController.signup')
   Route.post('/logout', 'AuthController.logout')
 }).namespace('App/Controllers/Http/Auth')
+
+Route.group(() => {
+  Route.resource('/boats', 'BoatsController')
+}).middleware(['auth'])

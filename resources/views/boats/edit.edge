@@ -1,0 +1,20 @@
+<form action="{{ route('BoatsController.update', {id: boat.id}) }}?_method=PUT" method="post">
+<label for="name">Nom</label>
+<input type="text" id="name" name="name" required value="{{ boat.name }}">
+
+<label for="station">Station</label>
+<select name="stationId" id="station" value="{{ boat.stationId }}">
+  @each(station in stations)
+    <option value="{{ station.id }}">{{ station.name }}</option>
+  @endeach
+</select>
+
+<label for="type-boat">Station</label>
+<select name="typeBoatId" id="type-boat" {{ boat.typeBoatId }}>
+  @each(type in typeBoats)
+    <option value="{{ type.id }}">{{ type.name }}</option>
+  @endeach
+</select>
+
+<button type="submit">Modifier le bateau</button>
+</form>

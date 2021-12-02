@@ -8,7 +8,7 @@ export default class Boats extends BaseSchema {
       table.increments('id')
       table.string('name').notNullable()
       table.integer('station_id').unsigned().references('id').inTable('stations')
-      table.integer('boat_type_id').unsigned().references('id').inTable('type_boats')
+      table.integer('type_boat_id').unsigned().references('id').inTable('type_boats')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
