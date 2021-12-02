@@ -1,0 +1,14 @@
+@layout('layouts/empty')
+@set('title', 'Se connecter')
+
+@section('main')
+<form action="/login" method="post">
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email">
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password">
+  <label for="rememberMe">Se souvenir de moi</label>
+  <input type="checkbox" name="rememberMe" id="rememberMe">
+  <button type="submit">Se connecter</button>
+</form>
+@end
