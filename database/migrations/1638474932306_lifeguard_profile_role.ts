@@ -1,12 +1,14 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class SavedProfiles extends BaseSchema {
-  protected tableName = 'saved_profiles'
+export default class LifeguardProfileRole extends BaseSchema {
+  protected tableName = 'lifeguard_profile_role'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.primary(['person_id', 'role_id'])
 
+      table.integer('person_id').unsigned().references('person_id').inTable('lifeguard_profiles')
+      table.integer('role_id').unsigned().references('id').inTable('roles')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
