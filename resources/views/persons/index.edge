@@ -2,7 +2,15 @@
 @set('title', 'Les sauveteurs')
 
 @section('main')
-<ul>
+@if(auth.user.isAdmin)
+<div class="flex justify-end">
+<a href="{{ route('PersonsController.create') }}" class="px-2 py-1 border border-green-300 rounded">
+  Créer un utilisateur
+</a>
+</div>
+@end
+
+<ul class="max-w-lg h-full mx-auto flex flex-col mt-16 rounded-lg p-2 mb-4 bg-black bg-opacity-50 text-gray-600 border-2 border-white space-y-4">
   @each(person in persons)
   <li>
     <a href=" {{ route('PersonsController.show', {id: person.id}) }}">
