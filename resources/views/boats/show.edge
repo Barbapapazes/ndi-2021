@@ -19,5 +19,9 @@
   <a href="{{ route('BoatsPagesController.edit', {boat_id: boat.id, id: boat.pages[0].id}) }}">editer la page</a>
   @endif
   <a href="{{ route('BoatsPagesController.create', {boat_id: boat.id}) }}">créer un nouvelle page</a>
+
+    @if(auth?.user?.isAdmin)
+      <a href="{{ route('BoatsPagesController.index', {boat_id: boat.id}) }}">Pages bu bateau</a>
+    @end
 </div>
 @end
