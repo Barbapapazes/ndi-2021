@@ -13,7 +13,9 @@
   <ul>
     @each(person in people)
       <li>
-        {{person.firstname}}
+          <a href="{{ route('PersonsController.show', {id: person.id}) }}">
+            {{person.firstname}}
+          </a>
       </li>
     @endeach
   </ul>

@@ -38,14 +38,52 @@ Route.group(() => {
 }).namespace('App/Controllers/Http/Auth')
 
 Route.group(() => {
-  Route.resource('boats', 'BoatsController').only(['create', 'store', 'edit', 'update'])
-  Route.resource('boats.pages', 'BoatsPagesController')
+  Route.resource('boats', 'BoatsController')
+    .only(['create', 'store', 'edit', 'update'])
+    .middleware({
+      create: 'admin',
+      store: 'admin',
+      edit: 'admin',
+      update: 'admin',
+    })
+  Route.resource('boats.pages', 'BoatsPagesController').middleware({
+    index: 'admin',
+    update: 'admin',
+    destroy: 'admin',
+  })
 
-  Route.resource('persons', 'PersonsController').only(['create', 'store', 'edit', 'update'])
-  Route.resource('persons.pages', 'PersonsPagesController')
+  Route.resource('persons', 'PersonsController')
+    .only(['create', 'store', 'edit', 'update'])
+    .middleware({
+      create: 'admin',
+      store: 'admin',
+      edit: 'admin',
+      update: 'admin',
+    })
+  Route.resource('persons.pages', 'PersonsPagesController').middleware({
+    index: 'admin',
+    update: 'admin',
+    destroy: 'admin',
+  })
 
-  Route.resource('roles', 'RolesController')
-  Route.resource('rewards', 'RewardsController')
+  Route.resource('roles', 'RolesController').middleware({
+    index: 'admin',
+    show: 'admin',
+    create: 'admin',
+    store: 'admin',
+    edit: 'admin',
+    update: 'admin',
+    destroy: 'admin',
+  })
+  Route.resource('rewards', 'RewardsController').middleware({
+    index: 'admin',
+    show: 'admin',
+    create: 'admin',
+    store: 'admin',
+    edit: 'admin',
+    update: 'admin',
+    destroy: 'admin',
+  })
 }).middleware(['auth'])
 
 Route.resource('persons', 'PersonsController').only(['index', 'show'])

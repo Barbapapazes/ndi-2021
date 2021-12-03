@@ -1,8 +1,12 @@
 <div>
   {{ person.firstname}}
+  @if(person.pages[0])
   {{ person.pages[0].content}}
+  @else
+    cette personne n'a pas de page
+  @end
 
-  @if(person.pages[0].content)
+  @if(person.pages[0])
   <a href="{{ route('PersonsPagesController.edit', {person_id: person.id, id: person.pages[0].id}) }}">editer la page</a>
   @endif
   <a href="{{ route('PersonsPagesController.create', {person_id: person.id}) }}">créer un nouvelle page</a>
