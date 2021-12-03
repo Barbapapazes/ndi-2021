@@ -1,3 +1,7 @@
+v@layout('layouts/main')
+@set('title', 'Les stations')
+
+@section('main')
 <ul>
   @each(station in stations)
   <li>
@@ -5,3 +9,4 @@
   </li>
   @endeach
 </ul>
+@end

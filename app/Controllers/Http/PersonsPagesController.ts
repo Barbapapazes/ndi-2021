@@ -14,7 +14,26 @@ export default class PersonsPagesController {
       .wherePivot('person_id', personId)
       .preload('persons')
 
-    return view.render('persons.pages.index', { pages: pages.map((page) => page.toCheck) })
+    return view.render('persons.pages.index', { pages: pages.filter((page) => page.toCheck) })
+  }
+
+  public async create({ view, params }: HttpContextContract) {
+    return view.render('persons.pages.create', { person_id: params.person_id })
+  }
+
+  public async edit({ params, view }: HttpContextContract) {
+    const page = await Page.findOrFail(params.id)
+
+    return view.render('persons.pages.edit', { page: page, person_id: params.person_id })
+  }
+
+  public async store({ params, request, response }: HttpContextContract) {
+    const person = await Person.findOrFail(params.person_id)
+    const content = request.input('content')
+
+    await person.related('pages').create({ content })
+
+    return response.redirect().toRoute('persons.show', { id: params.person_id })
   }
 
   public async update({ response, params }: HttpContextContract) {

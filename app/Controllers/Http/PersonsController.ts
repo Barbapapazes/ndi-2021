@@ -14,6 +14,10 @@ export default class PersonsController {
   public async show({ params, view }: HttpContextContract) {
     const person = await Person.findOrFail(params.id)
 
+    await person.load('pages', (pages) => {
+      pages.where('to_check', false)
+    })
+
     return view.render('persons/show', { person })
   }
 

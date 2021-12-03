@@ -1,3 +1,7 @@
+@layout('layouts/main')
+@set('title', 'Editer un rôle')
+
+@section('main')
 <form action="{{ route('RolesController.update', {id: role.id }) }}?_method=PUT" method="post">
   <label for="name">Name</label>
   <input type="text" name="name" id="name" value="{{ role.name }}">

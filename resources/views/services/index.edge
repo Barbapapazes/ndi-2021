@@ -1,3 +1,7 @@
+@layout('layouts/main')
+@set('title', 'Les services')
+
+@section('main')
 <ul>
   @each(service in services)
   <li>
@@ -5,3 +9,4 @@
   </li>
   @endeach
 </ul>
+@end

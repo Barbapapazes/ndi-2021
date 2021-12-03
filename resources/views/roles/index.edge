@@ -1,3 +1,7 @@
+@layout('layouts/main')
+@set('title', 'Les rôles')
+
+@section('main')
 <ul>
   @each(role in roles)
   <li>
@@ -5,3 +9,4 @@
   </li>
   @endeach
 </ul>
+@end

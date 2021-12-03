@@ -1,3 +1,7 @@
+@layout('layouts/main')
+@set('title', 'Créer une station')
+
+@section('main')
 <form action="{{ route('StationsController.store') }}" method="post">
   <label for="name">Name</label>
   <input type="text" name="name" id="name">
@@ -6,3 +10,4 @@
 
   <button type="submit">Créer la station</button>
 </form>
+@end

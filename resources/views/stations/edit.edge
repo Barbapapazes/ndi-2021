@@ -1,3 +1,7 @@
+@layout('layouts/main')
+@set('title', 'Editer une station')
+
+@section('main')
 <form action="{{ route('StationsController.update', {id: station.id }) }}?_method=PUT" method="post">
   <label for="name">Name</label>
   <input type="text" name="name" id="name" value="{{ station.name }}">
@@ -6,3 +10,4 @@
 
   <button type="submit">Modifier la station</button>
 </form>
+@end

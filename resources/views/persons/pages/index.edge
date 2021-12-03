@@ -1,3 +1,7 @@
+@layout('layouts/main')
+@set('title', 'Les pages d\'une personne')
+
+@section('main')
 <ul>
   @each(page in pages)
   <li>
@@ -11,3 +15,4 @@
   </li>
   @endeach
 </ul>
+@end

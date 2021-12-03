@@ -1,3 +1,6 @@
 <div>
   {{ person.firstname}}
+  {{ person.pages[0].content}}
+
+  <a href="{{ route('PersonsPagesController.edit', {person_id: person.id, id: person.pages[0].id}) }}">editer</a>
 </div>

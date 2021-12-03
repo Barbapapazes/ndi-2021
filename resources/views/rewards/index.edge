@@ -1,3 +1,7 @@
+@layout('layouts/main')
+@set('title', 'Les gratifications')
+
+@section('main')
 <ul>
   @each(reward in rewards)
   <li>
@@ -5,3 +9,4 @@
   </li>
   @endeach
 </ul>
+@end

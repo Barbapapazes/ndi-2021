@@ -1,0 +1,18 @@
+@layout('layouts/main')
+@set('title', 'Les pages d\'un bateau')
+
+@section('main')
+<ul>
+  @each(page in pages)
+  <li>
+    {{ page.content }}
+    <form action="{{ route('BoatsPagesController.destroy', {id: page.id, boat_id: page.boats[0].id}) }}?_method=DELETE" method="post">
+      <button type="submit">Supprimer la page</button>
+    </form>
+    <form action="{{ route('BoatsPagesController.update', {id: page.id, boat_id: page.boats[0].id}) }}?_method=PUT" method="post">
+      <button type="submit">Accepter la page</button>
+    </form>
+  </li>
+  @endeach
+</ul>
+@end

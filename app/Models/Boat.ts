@@ -14,6 +14,7 @@ import Person from './Person'
 import Station from './Station'
 import Excursion from './Excursion'
 import TypeBoat from './TypeBoat'
+import Page from './Page'
 
 export default class Boat extends BaseModel {
   @column({ isPrimary: true })
@@ -63,6 +64,15 @@ export default class Boat extends BaseModel {
     pivotTimestamps: true,
   })
   public excursions: ManyToMany<typeof Excursion>
+
+  @manyToMany(() => Page, {
+    localKey: 'id',
+    relatedKey: 'id',
+    pivotForeignKey: 'boat_id',
+    pivotRelatedForeignKey: 'page_id',
+    pivotTable: 'boat_pages',
+  })
+  public pages: ManyToMany<typeof Page>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
