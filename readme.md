@@ -28,6 +28,6 @@ Pour **l'administrateur**, il est possible de modifier l'ensemble des **données
 L'administrateur est le compte suivant :
 
 - email: *root@root.fr*
-- mot de passe: *root*
+- mot de passe: _root_
 
 Merci pour cette nuit ! Toujours un plaisir.
