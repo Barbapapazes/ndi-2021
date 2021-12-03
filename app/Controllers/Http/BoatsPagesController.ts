@@ -51,11 +51,11 @@ export default class BoatsPagesController {
     return response.redirect().toRoute('boats.show', { id: params.boat_id })
   }
 
-  public async destroy({ params, view }: HttpContextContract) {
+  public async destroy({ params, response }: HttpContextContract) {
     const page = await Page.findOrFail(params.id)
 
     await page.delete()
 
-    return view.render('/')
+    return response.redirect().toRoute('boats.show', { id: params.person_id })
   }
 }
