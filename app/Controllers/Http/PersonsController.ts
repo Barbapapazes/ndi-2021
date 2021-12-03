@@ -29,7 +29,7 @@ export default class PersonsController {
     const lastname = request.input('lastname')
     const birth = request.input('birth')
     const death = request.input('death')
-    const createLifeguardProfile = request.input('createLifeguardProfile')
+    const createLifeguardProfile = !!request.input('createLifeguardProfile')
     console.log(createLifeguardProfile)
     const startDate = request.input('startDate')
     const endDate = request.input('endDate')

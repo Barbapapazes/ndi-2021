@@ -1,0 +1,13 @@
+<ul>
+  @each(page in pages)
+  <li>
+    {{ page.content }}
+    <form action="{{ route('PersonsPagesController.destroy', {id: page.id, person_id: page.persons[0].id}) }}?_method=DELETE" method="post">
+      <button type="submit">Supprimer la page</button>
+    </form>
+    <form action="{{ route('PersonsPagesController.update', {id: page.id, person_id: page.persons[0].id}) }}?_method=PUT" method="post">
+      <button type="submit">Accepter la page</button>
+    </form>
+  </li>
+  @endeach
+</ul>

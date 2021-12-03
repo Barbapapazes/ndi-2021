@@ -39,7 +39,9 @@ Route.group(() => {
 
 Route.group(() => {
   Route.resource('/boats', 'BoatsController').only(['create', 'store', 'edit', 'update'])
+
   Route.resource('/persons', 'PersonsController').only(['create', 'store', 'edit', 'update'])
+  Route.resource('persons.pages', 'PersonsPagesController')
 
   Route.resource('/roles', 'RolesController')
   Route.resource('/rewards', 'RewardsController')
