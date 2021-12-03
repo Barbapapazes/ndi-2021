@@ -10,27 +10,26 @@
 <body>
   <canvas id="ThreeCanvas" class="w-full h-full block inset-0 z-0 bg-black"></canvas>
   <div class="absolute inset-0 w-full h-full">
-    <header class="xl:flex flex-row justify-between items-center px-8 absolute w-full h-20 left-0 top-0 border-b-2 border-white hidden">
+    <header class="flex flex-row justify-between items-center px-8 absolute w-full h-20 left-0 top-0 border-b-2 border-white">
        <div class="flex flex-row">
-        <img src="favicon.svg" alt="Vite App" class="w-14" />
         <h1 class="text-4xl font-bold text-white leading-normal px-4">Sauveteurs du dunkerquois</h1>
       </div>
-      <div class="flex flex-row justify-center items-center">
+      <div class="flex flex-row justify-center items-center space-x-4">
         @if(auth.isLoggedIn)
         <form action="{{ route('AuthController.logout') }}" method="post">
-          <button type="submit" class="text-xl font-bold text-primary bg-white leading-normal w-32 h-12 rounded-lg m-8">Se déconnecter</button>
+          <button type="submit" class="text-xl text-primary bg-white leading-normal px-2 py-1rounded-lg flex items-center justify-center">Se déconnecter</button>
         </form>
         @else
-        <a href="{{ route('AuthController.login') }}" class="text-xl font-bold text-primary bg-white leading-normal w-32 h-12 rounded-lg m-8">
+        <a href="{{ route('AuthController.login') }}" class="text-xl text-primary px-2 py-1 rounded-lg flex items-center justify-center border border-blue-500">
           Se connecter
         </a>
-        <a href="{{ route('AuthController.signup') }}" class="text-xl font-bold text-primary bg-white leading-normal w-32 h-12 rounded-lg m-8">
+        <a href="{{ route('AuthController.signup') }}" class="text-xl text-primary px-2 py-1 rounded-lg flex items-center justify-center bg-blue-500 text-white">
           S'incrire
         </a>
         @end
       </div>
     </header>
-    <nav>
+    <nav class="mt-20">
       <ul>
         <li>
           <a href="{{ route('PersonsController.index') }}">
@@ -52,9 +51,14 @@
             Services des ports
           </a>
         </li>
+         <li>
+          <a href="{{ route('BoatsController.index') }}">
+            Les bateaux
+          </a>
+        </li>
       </ul>
     </nav>
-    <main>
+    <main class="max-w-lg mx-auto">
       @!section('main')
     </main>
   </div>

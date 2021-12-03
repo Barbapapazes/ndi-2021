@@ -1,37 +1,78 @@
-<form action=" {{ route('PersonsController.store') }} " method="post">
-  <label for="firstname">Prénom</label>
-  <input type="text" name="firstname" id="firstname" required>
-  <label for="lastname">Nom</label>
-  <input type="text" name="lastname" id="lastname">
+@layout('layouts/empty')
+@set('title', 'Créer un sauveteur')
 
+@section('main')
+<form action=" {{ route('PersonsController.store') }} " method="post">
+  <div class="space-y-2 flex flex-col">
+  <label for="firstname">Prénom</label>
+  <input type="text" name="firstname" id="firstname" required class="border border-blue-300 rounded">
+  </div>
+
+  <div class="space-y-2 flex flex-col">
+  <label for="lastname">Nom</label>
+  <input type="text" name="lastname" id="lastname" class="border border-blue-300 rounded">
+  </div>
+
+  <div class="space-y-2 flex flex-col">
   <label for="birth">Date de naissance</label>
   <input type="date" name="birth" id="birth">
+  </div>
+
+  <div class="space-y-2 flex flex-col">
   <label for="death">Date de mort</label>
   <input type="date" name="death" id="death">
+  </div>
 
-  <input type="radio" id="homme" name="gender" for="gender"/>
-  <label for="homme">Homme</label>
-  <input type="radio" id="femme" name="gender"  for="gender"/>
-  <label for="femme">Femme</label>
+  <div class="flex flex-row space-x-2">
+    <input type="radio" id="homme" name="gender" for="gender"/>
+    <label for="homme">Homme</label>
+  </div>
+  <div class="flex flex-row space-x-2">
+    <input type="radio" id="femme" name="gender"  for="gender"/>
+    <label for="femme">Femme</label>
+  </div>
 
-  <div></div>
-  <label for="createLifeguardProfile">Ajouter un profil de sauveteur</label>
-  <input type="checkbox" name="createLifeguardProfile" id="createLifeguardProfile">
+  <div class="flex flex-row space-x-2">
+    <label for="createLifeguardProfile">Ajouter un profil de sauveteur</label>
+    <input type="checkbox" name="createLifeguardProfile" id="createLifeguardProfile" class="border border-blue-300 rounded">
+  </div>
 
-  <label for="start_date">Date d'engagement</label>
-  <input type="date" name="startDate" id="start_date">
-  <label for="end_date">Date de retraite</label>
-  <input type="date" name="endDate" id="end_date">
+  <div class="flex flex-row space-x-2">
+    <label for="start_date">Date d'engagement</label>
+    <input type="date" name="startDate" id="start_date" required>
+  </div>
+  <div class="flex flex-row space-x-2">
+    <label for="end_date">Date de retraite</label>
+    <input type="date" name="endDate" id="end_date">
+  </div>
 
-  @each(role in roles)
-    <input type="checkbox" name="roles[]" id="role_{{ role.id }}" value="{{ role.id }}">
-    <label for="role_{{ role.id }}">{{ role.name}}</label>
-  @endeach
+  <div class="space-y-2 mt-6">
+    <h3 class="font-bold">Les rôles</h3>
 
-  @each(reward in rewards)
-    <input type="checkbox" name="rewards[]" id="reward_{{ reward.id }}" value="{{ reward.id }}">
-    <label for="reward_{{ reward.id }}">{{ reward.name}}</label>
-  @endeach
+    <div class="grid grid-cols-3">
+      @each(role in roles)
+      <div class="flex flex-row space-x-2">
+        <input type="checkbox" name="roles[]" id="role_{{ role.id }}" value="{{ role.id }}">
+        <label for="role_{{ role.id }}">{{ role.name}}</label>
+      </div>
+      @endeach
+    </div>
+  </div>
+
+  <div class="space-y-2 mt-6">
+    <h3 class="font-bold">Les gratifications</h3>
+
+    <div class="grid grid-cols-3">
+      @each(reward in rewards)
+      <div class="flex flex-row space-x-2">
+      <input type="checkbox" name="rewards[]" id="reward_{{ reward.id }}" value="{{ reward.id }}">
+      <label for="reward_{{ reward.id }}">{{ reward.name}}</label>
+      </div>
+      @endeach
+    </div>
+  </div>
+
 
   <button type="submit">Créer la personne</button>
 </form>
+@end

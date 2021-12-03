@@ -2,59 +2,65 @@
 @set('title', 'Votre recherche')
 
 @section('main')
-<div>
-  <form action="{{ route('SearchesController.index') }}" method="get">
-    <input type="text" name="search" id="search" placeholder="Rechercher sur le site" value="{{ search }}">
+<div class="h-full">
+  <form action="{{ route('SearchesController.index') }}" method="get" class="max-w-md mx-auto space-x-4 flex flex-row ">
+    <input type="text" name="search" id="search" class="rounded-lg border-2 border-white text-2xl font-bold text-white bg-transparent focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent py-4 px-2" value="{{search}}">
 
-    <button type="submit">Rechercher</button>
+    <button type="submit" class="rounded px-2 py-2 bg-blue-500 text-white text-xl">Rechercher</button>
   </form>
 
-  <h2>Les personnes</h2>
-  <ul>
-    @each(person in people)
-      <li>
-          <a href="{{ route('PersonsController.show', {id: person.id}) }}">
-            {{person.firstname}}
+  <div class="max-w-lg h-full mx-auto flex flex-col mt-16 rounded-lg p-2 mb-4 bg-black bg-opacity-50 border-2 border-white space-y-4">
+  <h2 class="text-xl text-blue-400">Les personnes</h2>
+    <ul class="space-y-4">
+      @each(person in people)
+        <li>
+            <a href="{{ route('PersonsController.show', {id: person.id}) }}" class="block bg-white p-4 rounded w-full">
+              {{person.firstname}}
+            </a>
+        </li>
+      @endeach
+    </ul>
+    <ul class="flex flex-row text-white space-x-2 justify-center">
+      @each(anchor in people.getUrlsForRange(1, people.lastPage))
+      <a href="{{ route('SearchesController.index') }}?personPage={{ anchor.page }}&search={{search}}" class="p-1 rounded border border-white">
+        {{ anchor.page }}
+      </a>
+    @endeach
+    </ul>
+    <h2 class="text-xl text-blue-400">Les bateaux</h2>
+    <ul>
+      @each(boat in boats)
+        <li>
+          <a href="{{  route('BoatsController.show', {id: boat.id}) }}" class="block bg-white p-4 rounded w-full">
+            {{boat.name}}
           </a>
-      </li>
+        </li>
+      @endeach
+    </ul>
+    <ul class="flex flex-row text-white space-x-2 justify-center">
+      @each(anchor in boats.getUrlsForRange(1, boats.lastPage))
+      <a href="{{ route('SearchesController.index') }}?boatPage={{ anchor.page }}&search={{search}}" class="p-1 rounded border border-white">
+        {{ anchor.page }}
+      </a>
     @endeach
-  </ul>
-  <ul>
-    @each(anchor in people.getUrlsForRange(1, people.lastPage))
-    <a href="{{ route('SearchesController.index') }}?personPage={{ anchor.page }}&search={{search}}">
-      {{ anchor.page }}
-    </a>
-  @endeach
-  </ul>
-  <h2>Les bateaux</h2>
-  <ul>
-    @each(boat in boats)
-      <li>
-        {{boat.name}}
-      </li>
+    </ul>
+    <h2 class="text-xl text-blue-400">Les sorties en mer</h2>
+    <ul>
+      @each(excursion in excursions)
+        <li>
+          <a href="{{  route('ExcursionsController.show', {id: excursion.id})}}" class="block bg-white p-4 rounded w-full">
+            {{excursion.name}}
+          </a>
+        </li>
+      @endeach
+    </ul>
+  <ul class="flex flex-row text-white space-x-2 justify-center">
+      @each(anchor in excursions.getUrlsForRange(1, excursions.lastPage))
+      <a href="{{ route('SearchesController.index') }}?excursionPage={{ anchor.page }}&search={{search}}" class="p-1 rounded border border-white">
+        {{ anchor.page }}
+      </a>
     @endeach
-  </ul>
-  <ul>
-    @each(anchor in boats.getUrlsForRange(1, boats.lastPage))
-    <a href="{{ route('SearchesController.index') }}?boatPage={{ anchor.page }}&search={{search}}">
-      {{ anchor.page }}
-    </a>
-  @endeach
-  </ul>
-  <h2>Les excursions</h2>
-  <ul>
-    @each(excursion in excursions)
-      <li>
-        {{excursion.name}}
-      </li>
-    @endeach
-  </ul>
- <ul>
-    @each(anchor in excursions.getUrlsForRange(1, excursions.lastPage))
-    <a href="{{ route('SearchesController.index') }}?excursionPage={{ anchor.page }}&search={{search}}">
-      {{ anchor.page }}
-    </a>
-  @endeach
-  </ul>
+    </ul>
+  </div>
 </div>
 @end

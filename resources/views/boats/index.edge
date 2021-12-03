@@ -1,7 +1,14 @@
-<ul>
+@layout('layouts/main')
+@set('title', 'Les bateaux')
+
+@section('main')
+<ul class="max-w-lg h-full mx-auto flex flex-col mt-16 rounded-lg p-2 mb-4 bg-black bg-opacity-50 border-2 border-white space-y-4">
   @each(boat in boats)
   <li>
-    {{ boat.name }}
+    <a href="{{ route('BoatsController.show', {id: boat.id}) }}">
+      {{ boat.name }} à {{ boat.station.name }}
+    </a>
   </li>
   @endeach
 </ul>
+@end
