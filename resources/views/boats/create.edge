@@ -1,20 +1,33 @@
-<form action="{{ route('BoatsController.store') }}" method="post">
-<label for="name">Nom</label>
-<input type="text" id="name" name="name" required>
+@layout('layouts/empty')
+@set('title', 'Créer un bateau')
 
-<label for="station">Station</label>
-<select name="stationId" id="station">
-  @each(station in stations)
-    <option value="{{ station.id }}">{{ station.name }}</option>
-  @endeach
-</select>
+@section('main')
+<form action="{{ route('BoatsController.store') }}" method="post" class="flex flex-col space-y-6">
+  <div class="space-y-2 flex flex-col">
+    <label for="name">Nom</label>
+    <input type="text" id="name" name="name"  required class="border border-blue-300 rounded">
+  </div>
 
-<label for="type-boat">Station</label>
-<select name="typeBoatId" id="type-boat">
-  @each(type in typeBoats)
-    <option value="{{ type.id }}">{{ type.name }}</option>
-  @endeach
-</select>
+  <div class="space-y-2 flex flex-col">
+    <label for="station">Station</label>
+    <select name="stationId" id="station">
+      @each(station in stations)
+      <option value="{{ station.id }}">{{ station.name }}</option>
+      @endeach
+    </select>
+  </div>
 
-<button type="submit">Créer le bateau</button>
+  <div class="space-y-2 flex flex-col">
+    <label for="type-boat">Station</label>
+    <select name="typeBoatId" id="type-boat">
+      @each(type in typeBoats)
+      <option value="{{ type.id }}">{{ type.name }}</option>
+      @endeach
+    </select>
+  </div>
+
+  <div class="flex justify-end">
+    <button type="submit" class="bg-blue-500 text-white rounded px-2 py-1">Créer le bateau</button>
+  </div>
 </form>
+@end
