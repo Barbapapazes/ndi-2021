@@ -2,11 +2,17 @@
 @set('title', 'S\'inscrire')
 
 @section('main')
-<form action="/signup" method="post">
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email">
-  <label for="password">Password</label>
-  <input type="password" name="password" id="password">
-  <button type="submit">Se connecter</button>
+<form action="/signup" method="post" class="flex flex-col space-y-6">
+  <div class="space-y-2 flex flex-col">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" class="border border-blue-300 rounded">
+  </div>
+  <div class="space-y-2 flex flex-col">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" class="border border-blue-300 rounded">
+  </div>
+   <div class="flex justify-center">
+    <button type="submit" class="bg-blue-500 text-white rounded px-2 py-1">S'inscrire</button>
+  </div>
 </form>
 @end

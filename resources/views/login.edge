@@ -2,17 +2,21 @@
 @set('title', 'Se connecter')
 
 @section('main')
-<form action="/login" method="post" class="flex flex-col">
+<form action="/login" method="post" class="flex flex-col space-y-6">
   <div class="space-y-2 flex flex-col">
     <label for="email">Email</label>
     <input type="email" name="email" id="email" class="border border-blue-300 rounded">
   </div>
-  <div class="space-y-2">
+  <div class="space-y-2 flex flex-col">
     <label for="password">Password</label>
-    <input type="password" name="password" id="password">
+    <input type="password" name="password" id="password" class="border border-blue-300 rounded">
   </div>
-  <label for="rememberMe">Se souvenir de moi</label>
-  <input type="checkbox" name="rememberMe" id="rememberMe">
-  <button type="submit">Se connecter</button>
+  <div class="flex flex-row items-center space-x-2">
+    <input type="checkbox" name="rememberMe" id="rememberMe">
+    <label for="rememberMe" class="text-sm">Se souvenir de moi</label>
+  </div>
+  <div class="flex justify-center">
+    <button type="submit" class="bg-blue-500 text-white rounded px-2 py-1">Se connecter</button>
+  </div>
 </form>
 @end
