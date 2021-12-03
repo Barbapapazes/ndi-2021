@@ -1,8 +1,12 @@
-@layout('layouts/app')
+@layout('layouts/main')
 @set('title', 'Accueil')
 
 @section('main')
 <div>
-  Bonjour
+  <form action="{{ route('SearchesController.index') }}" method="get">
+    <input type="text" name="search" id="search" placeholder="Rechercher sur le site">
+
+    <button type="submit">Rechercher</button>
+  </form>
 </div>
 @end

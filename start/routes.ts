@@ -53,3 +53,5 @@ Route.resource('/boats', 'BoatsController').only(['index', 'show'])
 Route.resource('/stations', 'StationsController').only(['index', 'show'])
 Route.resource('/services', 'ServicesController').only(['index', 'show'])
 Route.resource('/excursions', 'ExcursionsController').only(['index', 'show'])
+
+Route.get('/search', 'SearchesController.index')

@@ -1,0 +1,58 @@
+@layout('layouts/main')
+@set('title', 'Votre recherche')
+
+@section('main')
+<div>
+  <form action="{{ route('SearchesController.index') }}" method="get">
+    <input type="text" name="search" id="search" placeholder="Rechercher sur le site" value="{{ search }}">
+
+    <button type="submit">Rechercher</button>
+  </form>
+
+  <h2>Les personnes</h2>
+  <ul>
+    @each(person in people)
+      <li>
+        {{person.firstname}}
+      </li>
+    @endeach
+  </ul>
+  <ul>
+    @each(anchor in people.getUrlsForRange(1, people.lastPage))
+    <a href="{{ route('SearchesController.index') }}?personPage={{ anchor.page }}&search={{search}}">
+      {{ anchor.page }}
+    </a>
+  @endeach
+  </ul>
+  <h2>Les bateaux</h2>
+  <ul>
+    @each(boat in boats)
+      <li>
+        {{boat.name}}
+      </li>
+    @endeach
+  </ul>
+  <ul>
+    @each(anchor in boats.getUrlsForRange(1, boats.lastPage))
+    <a href="{{ route('SearchesController.index') }}?boatPage={{ anchor.page }}&search={{search}}">
+      {{ anchor.page }}
+    </a>
+  @endeach
+  </ul>
+  <h2>Les excursions</h2>
+  <ul>
+    @each(excursion in excursions)
+      <li>
+        {{excursion.name}}
+      </li>
+    @endeach
+  </ul>
+ <ul>
+    @each(anchor in excursions.getUrlsForRange(1, excursions.lastPage))
+    <a href="{{ route('SearchesController.index') }}?excursionPage={{ anchor.page }}&search={{search}}">
+      {{ anchor.page }}
+    </a>
+  @endeach
+  </ul>
+</div>
+@end
