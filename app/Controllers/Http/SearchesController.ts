@@ -13,6 +13,7 @@ export default class SearchesController {
 
     const people = await Database.from('people')
       .where('firstname', 'like', `%${search}%`)
+      .orWhere('lastname', 'like', `%${search}%`)
       .paginate(personPage, this.LIMIT)
     const boats = await Database.from('boats')
       .where('boats.name', 'like', `%${search}%`)
