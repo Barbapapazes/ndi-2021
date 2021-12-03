@@ -1,5 +1,5 @@
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
-import TypeBoat from 'app/Models/TypeBoat'
+import TypeBoat from 'App/Models/TypeBoat'
 export default class TypeBoatSeeder extends BaseSeeder {
   public async run() {
     // Write your database queries inside the run method

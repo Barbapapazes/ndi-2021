@@ -1,5 +1,5 @@
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
-import Service from 'app/Models/Service'
+import Service from 'App/Models/Service'
 export default class ServiceSeeder extends BaseSeeder {
   public async run() {
     // Write your database queries inside the run method
