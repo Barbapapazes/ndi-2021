@@ -34,7 +34,7 @@ export default class Excursion extends BaseModel {
     pivotTable: 'excursion_person',
     pivotTimestamps: true,
   })
-  public savedPerson: ManyToMany<typeof Person>
+  public savedPersons: ManyToMany<typeof Person>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

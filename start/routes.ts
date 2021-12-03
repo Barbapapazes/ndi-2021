@@ -66,6 +66,13 @@ Route.group(() => {
     destroy: 'admin',
   })
 
+  Route.resource('excursions', 'ExcursionsController').only(['create', 'store', 'edit', 'update'])
+  Route.resource('excursions.pages', 'ExcursionsPagesController').middleware({
+    index: 'admin',
+    update: 'admin',
+    destroy: 'admin',
+  })
+
   Route.resource('roles', 'RolesController').middleware({
     index: 'admin',
     show: 'admin',
@@ -84,12 +91,32 @@ Route.group(() => {
     update: 'admin',
     destroy: 'admin',
   })
+
+  Route.resource('stations', 'StationsController')
+    .only(['create', 'store', 'edit', 'update'])
+    .middleware({
+      create: 'admin',
+      store: 'admin',
+      edit: 'admin',
+      update: 'admin',
+      destroy: 'admin',
+    })
+
+  Route.resource('services', 'ServicesController')
+    .only(['create', 'store', 'edit', 'update'])
+    .middleware({
+      create: 'admin',
+      store: 'admin',
+      edit: 'admin',
+      update: 'admin',
+      destroy: 'admin',
+    })
 }).middleware(['auth'])
 
-Route.resource('persons', 'PersonsController').only(['index', 'show'])
 Route.resource('boats', 'BoatsController').only(['index', 'show'])
+Route.resource('persons', 'PersonsController').only(['index', 'show'])
+Route.resource('excursions', 'ExcursionsController').only(['index', 'show'])
 Route.resource('stations', 'StationsController').only(['index', 'show'])
 Route.resource('services', 'ServicesController').only(['index', 'show'])
-Route.resource('excursions', 'ExcursionsController').only(['index', 'show'])
 
 Route.get('search', 'SearchesController.index')
