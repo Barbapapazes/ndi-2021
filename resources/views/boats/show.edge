@@ -1,3 +1,15 @@
+@layout('layouts/main')
+@set('title', 'Un bateau')
+
+@section('main')
+<div>
 <div>
   {{ boat.name}}
 </div>
+
+  @if(boat.pages[0])
+  <a href="{{ route('BaotsPagesController.edit', {boat_id: boat.id, id: boat.pages[0].id}) }}">editer la page</a>
+  @endif
+  <a href="{{ route('BaotsPagesController.create', {boat_id: boat.id}) }}">créer un nouvelle page</a>
+</div>
+@end
