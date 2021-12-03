@@ -2,11 +2,15 @@
 @set('title', 'Se connecter')
 
 @section('main')
-<form action="/login" method="post">
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email">
-  <label for="password">Password</label>
-  <input type="password" name="password" id="password">
+<form action="/login" method="post" class="flex flex-col">
+  <div class="space-y-2 flex flex-col">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" class="border border-blue-300 rounded">
+  </div>
+  <div class="space-y-2">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+  </div>
   <label for="rememberMe">Se souvenir de moi</label>
   <input type="checkbox" name="rememberMe" id="rememberMe">
   <button type="submit">Se connecter</button>
