@@ -11,7 +11,11 @@ export default class BoatsController {
   }
 
   public async show({ params, view }: HttpContextContract) {
-    const boat = await Boat.query().preload('station').where('id', params.id).firstOrFail()
+    const boat = await Boat.query()
+      .preload('station')
+      .preload('pages')
+      .where('id', params.id)
+      .firstOrFail()
 
     return view.render('boats/show', { boat })
   }

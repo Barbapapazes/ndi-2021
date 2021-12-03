@@ -8,8 +8,16 @@
 </div>
 
   @if(boat.pages[0])
-  <a href="{{ route('BaotsPagesController.edit', {boat_id: boat.id, id: boat.pages[0].id}) }}">editer la page</a>
+  <article>
+    {{ boat.pages[0].content}}
+  </article>
+  @else
+    ce bateau n'a pas de page
+  @end
+
+  @if(boat.pages[0])
+  <a href="{{ route('BoatsPagesController.edit', {boat_id: boat.id, id: boat.pages[0].id}) }}">editer la page</a>
   @endif
-  <a href="{{ route('BaotsPagesController.create', {boat_id: boat.id}) }}">créer un nouvelle page</a>
+  <a href="{{ route('BoatsPagesController.create', {boat_id: boat.id}) }}">créer un nouvelle page</a>
 </div>
 @end
