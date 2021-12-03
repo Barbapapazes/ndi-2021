@@ -6,7 +6,7 @@ import LifeguardProfile from 'App/Models/LifeguardProfile'
 
 export default class PersonsController {
   public async index({ view }: HttpContextContract) {
-    const persons = await Person.all()
+    const persons = await Person.query().preload('lifeguardProfile').preload('pages')
 
     return view.render('persons/index', { persons })
   }
@@ -14,8 +14,14 @@ export default class PersonsController {
   public async show({ params, view }: HttpContextContract) {
     const person = await Person.findOrFail(params.id)
 
-    await person.load('pages', (pages) => {
-      pages.where('to_check', false)
+    await person.load((loader) => {
+      loader
+        .load('pages', (pages) => {
+          pages.where('to_check', false)
+        })
+        .load('lifeguardProfile', (profile) => {
+          profile.preload('roles').preload('rewards')
+        })
     })
 
     return view.render('persons/show', { person })

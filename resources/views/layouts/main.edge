@@ -9,6 +9,44 @@
   @entryPointStyles('app')
 </head>
 <body>
+  <header>
+    @if(auth.isLoggedIn)
+      <form action="{{ route('AuthController.logout') }}" method="post">
+        <button type="submit">Se déconnecter</button>
+      </form>
+    @else
+      <a href="{{ route('AuthController.login') }}">
+        Se connecter
+      </a>
+      <a href="{{ route('AuthController.signup') }}">
+        S'incrire
+      </a>
+    @end
+  </header>
+  <nav>
+    <ul>
+      <li>
+        <a href="{{ route('PersonsController.index') }}">
+          Sauveteurs
+        </a>
+      </li>
+      <li>
+        <a href="{{ route('ExcursionsController.index') }}">
+          Sorties en mer
+        </a>
+      </li>
+      <li>
+        <a href="{{ route('StationsController.index') }}">
+          Stations
+        </a>
+      </li>
+      <li>
+        <a href="{{ route('ServicesController.index') }}">
+          Services des ports
+        </a>
+      </li>
+    </ul>
+  </nav>
   <main>
     @!section('main')
   </main>

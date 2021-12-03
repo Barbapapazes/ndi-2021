@@ -1,7 +1,29 @@
+@layout('layouts/main')
+@set('title', 'Les sauveteurs')
+
+@section('main')
 <ul>
   @each(person in persons)
   <li>
-    {{ person.firstname }}
+    <a href=" {{ route('PersonsController.show', {id: person.id}) }}">
+      <div>
+        {{ person.firstname }}
+        @if(person.lastname)
+        {{ person.lastname }}
+        @end
+      </div>
+      @if(person.pages[0])
+      <div>
+        {{
+          truncate(
+            person.pages[0].content,
+            50
+            )
+          }}
+    </div>
+    @end
+    </a>
   </li>
   @endeach
 </ul>
+@end

@@ -1,7 +1,41 @@
+@layout('layouts/main')
+@set('title', 'Un sauveteur')
+
+@section('main')
 <div>
-  {{ person.firstname}}
+  <div>
+    {{ person.firstname}}
+    @if(person.lastname)
+      {{ person.lastname}}
+    @end
+
+    <div>
+      du {{ person.birth}}
+      @if(person.death)
+        au {{ person.death}}
+      @end
+    </div>
+  </div>
+  <ul>
+    @each(role in person.lifeguardProfile.roles)
+    <li>
+      {{ role.name}}
+    </li>
+    @endeach
+  </ul>
+
+  <ul>
+    @each(remard in person.lifeguardProfile.rewards)
+    <li>
+      {{ rewards.name}}
+    </li>
+    @endeach
+  </ul>
+
   @if(person.pages[0])
-  {{ person.pages[0].content}}
+  <article>
+    {{ person.pages[0].content}}
+  </article>
   @else
     cette personne n'a pas de page
   @end
@@ -11,3 +45,4 @@
   @endif
   <a href="{{ route('PersonsPagesController.create', {person_id: person.id}) }}">créer un nouvelle page</a>
 </div>
+@end
