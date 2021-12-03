@@ -17,7 +17,7 @@
       <div class="flex flex-row justify-center items-center space-x-4">
         @if(auth.isLoggedIn)
         <form action="{{ route('AuthController.logout') }}" method="post">
-          <button type="submit" class="text-xl text-primary bg-white leading-normal px-2 py-1rounded-lg flex items-center justify-center">Se déconnecter</button>
+          <button type="submit" class="text-primary px-2 py-1 rounded-lg flex items-center justify-center bg-blue-500 text-white">Se déconnecter</button>
         </form>
         @else
         <a href="{{ route('AuthController.login') }}" class="text-xl text-primary px-2 py-1 rounded-lg flex items-center justify-center border border-blue-500">
