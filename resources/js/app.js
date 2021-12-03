@@ -120,7 +120,7 @@ function boat() {
     water = new Water(waterGeometry, {
       textureWidth: 512,
       textureHeight: 512,
-      waterNormals: new THREE.TextureLoader().load('/assets/waternormals.jpg', function (texture) {
+      waterNormals: new THREE.TextureLoader().load('/waternormals.jpg', function (texture) {
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping
       }),
       alpha: 0.9,
@@ -165,7 +165,7 @@ function boat() {
 
     let ship
     loader.load(
-      '/assets/ship.glb',
+      '/ship.glb',
       function (gltf) {
         gltf.scene.position.set(0, -5, 0)
         gltf.scene.rotation.set(Math.PI / 100, 0, -Math.PI / 50)
