@@ -25,33 +25,33 @@ Route.get('/', async ({ view }) => {
 })
 
 Route.group(() => {
-  Route.get('/login', ({ view }) => {
+  Route.get('login', ({ view }) => {
     return view.render('login')
   })
-  Route.get('/signup', ({ view }) => {
+  Route.get('signup', ({ view }) => {
     return view.render('signup')
   })
 
-  Route.post('/login', 'AuthController.login')
-  Route.post('/signup', 'AuthController.signup')
-  Route.post('/logout', 'AuthController.logout')
+  Route.post('login', 'AuthController.login')
+  Route.post('signup', 'AuthController.signup')
+  Route.post('logout', 'AuthController.logout')
 }).namespace('App/Controllers/Http/Auth')
 
 Route.group(() => {
-  Route.resource('/boats', 'BoatsController').only(['create', 'store', 'edit', 'update'])
+  Route.resource('boats', 'BoatsController').only(['create', 'store', 'edit', 'update'])
   Route.resource('boats.pages', 'BoatsPagesController')
 
-  Route.resource('/persons', 'PersonsController').only(['create', 'store', 'edit', 'update'])
+  Route.resource('persons', 'PersonsController').only(['create', 'store', 'edit', 'update'])
   Route.resource('persons.pages', 'PersonsPagesController')
 
-  Route.resource('/roles', 'RolesController')
-  Route.resource('/rewards', 'RewardsController')
+  Route.resource('roles', 'RolesController')
+  Route.resource('rewards', 'RewardsController')
 }).middleware(['auth'])
 
-Route.resource('/persons', 'PersonsController').only(['index', 'show'])
-Route.resource('/boats', 'BoatsController').only(['index', 'show'])
-Route.resource('/stations', 'StationsController').only(['index', 'show'])
-Route.resource('/services', 'ServicesController').only(['index', 'show'])
-Route.resource('/excursions', 'ExcursionsController').only(['index', 'show'])
+Route.resource('persons', 'PersonsController').only(['index', 'show'])
+Route.resource('boats', 'BoatsController').only(['index', 'show'])
+Route.resource('stations', 'StationsController').only(['index', 'show'])
+Route.resource('services', 'ServicesController').only(['index', 'show'])
+Route.resource('excursions', 'ExcursionsController').only(['index', 'show'])
 
-Route.get('/search', 'SearchesController.index')
+Route.get('search', 'SearchesController.index')
