@@ -1,27 +1,27 @@
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
-import Service from "app/Models/Service"
+import Service from 'app/Models/Service'
 export default class ServiceSeeder extends BaseSeeder {
-  public async run () {
+  public async run() {
     // Write your database queries inside the run method
-    await Service.createMany([
+    await Service.updateOrCreateMany('name', [
       {
-        name : "Garde des quais"
+        name: 'Garde des quais',
       },
       {
-        name : "Garde des tentes"
+        name: 'Garde des tentes',
       },
       {
-        name : "Lamanage"
+        name: 'Lamanage',
       },
       {
-        name : "Phare"
+        name: 'Phare',
       },
       {
-        name : "balise"
+        name: 'balise',
       },
       {
-        name : "remorquage"
-      }
+        name: 'remorquage',
+      },
     ])
   }
 }
