@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, manyToMany, ManyToMany } from '@ioc:Adonis/Lucid/Orm'
 import Boat from './Boat'
 import Person from './Person'
+import Page from './Page'
 
 export default class Excursion extends BaseModel {
   @column({ isPrimary: true })
@@ -35,6 +36,15 @@ export default class Excursion extends BaseModel {
     pivotTimestamps: true,
   })
   public savedPersons: ManyToMany<typeof Person>
+
+  @manyToMany(() => Page, {
+    localKey: 'id',
+    relatedKey: 'id',
+    pivotForeignKey: 'excursion_id',
+    pivotRelatedForeignKey: 'page_id',
+    pivotTable: 'excursion_pages',
+  })
+  public pages: ManyToMany<typeof Page>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

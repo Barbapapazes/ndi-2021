@@ -4,6 +4,7 @@ import { compose } from '@ioc:Adonis/Core/Helpers'
 import { SoftDeletes } from '@ioc:Adonis/Addons/LucidSoftDeletes'
 import Person from './Person'
 import Boat from './Boat'
+import Excursion from './Excursion'
 
 export default class Page extends compose(BaseModel, SoftDeletes) {
   @column({ isPrimary: true })
@@ -32,6 +33,15 @@ export default class Page extends compose(BaseModel, SoftDeletes) {
     pivotTable: 'boat_pages',
   })
   public boats: ManyToMany<typeof Boat>
+
+  @manyToMany(() => Excursion, {
+    localKey: 'id',
+    relatedKey: 'id',
+    pivotForeignKey: 'page_id',
+    pivotRelatedForeignKey: 'excursion_id',
+    pivotTable: 'excursion_pages',
+  })
+  public excursions: ManyToMany<typeof Excursion>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
