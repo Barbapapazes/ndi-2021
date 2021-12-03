@@ -8,7 +8,7 @@ export default class ExcursionPerson extends BaseSchema {
       table.primary(['excursion_id', 'person_id'])
 
       table.integer('excursion_id').unsigned().references('id').inTable('excursions')
-      table.integer('person_id').unsigned().references('id').inTable('persons')
+      table.integer('person_id').unsigned().references('id').inTable('people')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

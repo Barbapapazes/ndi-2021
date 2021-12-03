@@ -7,7 +7,7 @@ export default class BoatPerson extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.primary(['boat_id', 'person_id'])
       table.integer('boat_id').unsigned().references('id').inTable('boats').notNullable()
-      table.integer('person_id').unsigned().references('id').inTable('persons').notNullable()
+      table.integer('person_id').unsigned().references('id').inTable('people').notNullable()
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

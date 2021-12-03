@@ -1,7 +1,7 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class Persons extends BaseSchema {
-  protected tableName = 'persons'
+export default class People extends BaseSchema {
+  protected tableName = 'people'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
@@ -11,7 +11,6 @@ export default class Persons extends BaseSchema {
       table.string('gender').nullable()
       table.timestamp('birth', { useTz: true }).nullable()
       table.timestamp('death', { useTz: true }).nullable()
-
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

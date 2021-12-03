@@ -1,0 +1,6 @@
+<form action="{{ route('RewardsController.update', {id: reward.id }) }}?_method=PUT" method="post">
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" value="{{ reward.name }}">
+
+  <button type="submit">Modifier la gratification</button>
+</form>

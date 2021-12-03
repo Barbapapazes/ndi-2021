@@ -18,7 +18,6 @@ export default class BoatsController {
 
   public async create({ view }: HttpContextContract) {
     const stations = await Station.all()
-    console.log(stations)
     const typeBoats = await TypeBoat.all()
 
     return view.render('boats/create', { stations, typeBoats })

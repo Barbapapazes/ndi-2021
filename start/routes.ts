@@ -38,5 +38,15 @@ Route.group(() => {
 }).namespace('App/Controllers/Http/Auth')
 
 Route.group(() => {
-  Route.resource('/boats', 'BoatsController')
+  Route.resource('/boats', 'BoatsController').only(['create', 'store', 'edit', 'update'])
+  Route.resource('/persons', 'PersonsController').only(['create', 'store', 'edit', 'update'])
+
+  Route.resource('/roles', 'RolesController')
+  Route.resource('/rewards', 'RewardsController')
 }).middleware(['auth'])
+
+Route.resource('/persons', 'PersonsController').only(['index', 'show'])
+Route.resource('/boats', 'BoatsController').only(['index', 'show'])
+Route.resource('/stations', 'StationsController').only(['index', 'show'])
+Route.resource('/services', 'ServicesController').only(['index', 'show'])
+Route.resource('/excursions', 'ExcursionsController').only(['index', 'show'])

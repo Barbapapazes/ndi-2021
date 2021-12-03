@@ -1,0 +1,37 @@
+<form action=" {{ route('PersonsController.store') }} " method="post">
+  <label for="firstname">Prénom</label>
+  <input type="text" name="firstname" id="firstname" required>
+  <label for="lastname">Nom</label>
+  <input type="text" name="lastname" id="lastname">
+
+  <label for="birth">Date de naissance</label>
+  <input type="date" name="birth" id="birth">
+  <label for="death">Date de mort</label>
+  <input type="date" name="death" id="death">
+
+  <input type="radio" id="homme" name="gender" for="gender"/>
+  <label for="homme">Homme</label>
+  <input type="radio" id="femme" name="gender"  for="gender"/>
+  <label for="femme">Femme</label>
+
+  <div></div>
+  <label for="createLifeguardProfile">Ajouter un profil de sauveteur</label>
+  <input type="checkbox" name="createLifeguardProfile" id="createLifeguardProfile">
+
+  <label for="start_date">Date d'engagement</label>
+  <input type="date" name="startDate" id="start_date">
+  <label for="end_date">Date de retraite</label>
+  <input type="date" name="endDate" id="end_date">
+
+  @each(role in roles)
+    <input type="checkbox" name="roles[]" id="role_{{ role.id }}" value="{{ role.id }}">
+    <label for="role_{{ role.id }}">{{ role.name}}</label>
+  @endeach
+
+  @each(reward in rewards)
+    <input type="checkbox" name="rewards[]" id="reward_{{ reward.id }}" value="{{ reward.id }}">
+    <label for="reward_{{ reward.id }}">{{ reward.name}}</label>
+  @endeach
+
+  <button type="submit">Créer la personne</button>
+</form>

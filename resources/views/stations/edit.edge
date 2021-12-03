@@ -1,0 +1,8 @@
+<form action="{{ route('StationsController.update', {id: station.id }) }}?_method=PUT" method="post">
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" value="{{ station.name }}">
+  <label for="location">Location</label>
+  <input type="text" name="location" id="location" {{ station.location }}>
+
+  <button type="submit">Modifier la station</button>
+</form>
